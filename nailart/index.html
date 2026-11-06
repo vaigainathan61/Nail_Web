@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nail Art Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><img src="assets/logo.png" alt="" onerror="this.remove()"><span>Nail Art Studio</span></div>
+  <div id="userbar" hidden><span id="who"></span><button class="link" id="logout">Log out</button></div>
+</header>
+
+<!-- 1. AUTH -->
+<section id="auth" class="screen active">
+  <div class="split">
+    <div class="art" aria-hidden="true">
+      <div class="stage"><i class="nail n1"></i><i class="nail n2"></i><i class="nail n3"></i><i class="nail n4"></i><i class="nail n5"></i></div>
+      <h1>Your nails, in three dimensions.</h1>
+      <p>Pick a design, choose a time, and we come to you.</p>
+    </div>
+    <div class="panel">
+      <div class="tabs" role="tablist">
+        <button class="tab on" data-tab="login">Log in</button>
+        <button class="tab" data-tab="signup">Sign up</button>
+      </div>
+      <form id="loginForm" class="form">
+        <label>Email<input type="email" id="lEmail" required autocomplete="email"></label>
+        <label>Password<input type="password" id="lPass" required autocomplete="current-password"></label>
+        <p class="err" id="lErr"></p>
+        <button class="btn" type="submit">Log in</button>
+      </form>
+      <form id="signupForm" class="form" hidden>
+        <label>Full name<input id="sName" required></label>
+        <label>Mobile number<input id="sPhone" type="tel" pattern="[0-9]{10}" placeholder="10 digits" required></label>
+        <label>Email<input type="email" id="sEmail" required autocomplete="email"></label>
+        <label>Password<input type="password" id="sPass" minlength="6" required autocomplete="new-password"></label>
+        <label>Confirm password<input type="password" id="sPass2" required autocomplete="new-password"></label>
+        <p class="err" id="sErr"></p>
+        <button class="btn" type="submit">Create account</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- 2. LOCATION -->
+<section id="loc" class="screen">
+  <div class="center card">
+    <div class="pin" aria-hidden="true"></div>
+    <h2>Turn on your location</h2>
+    <p>We use it to confirm your area and send our nail artist to the right place.</p>
+    <p class="err" id="locErr"></p>
+    <div id="locOk" class="okbox" hidden></div>
+    <button class="btn" id="locBtn">Turn on location</button>
+  </div>
+</section>
+
+<!-- 3. HOME -->
+<section id="home" class="screen">
+  <div class="wrap">
+    <div class="hello"><h2 id="hi"></h2><span class="chip" id="where"></span></div>
+    <div class="grid">
+      <article class="svc tilt" data-svc="3d">
+        <div class="hand3d"><i class="nail s1"></i><i class="nail s2"></i><i class="nail s3"></i><i class="nail s4"></i><i class="nail s5"></i></div>
+        <h3>3D nail art</h3>
+        <p>Sculpted, raised designs from our studio collection.</p>
+        <ul class="prices"><li>Per hand<b>₹249</b></li><li>Both hands<b>₹449</b></li></ul>
+        <button class="btn">Choose this</button>
+      </article>
+      <article class="svc tilt" data-svc="custom">
+        <div class="hand3d alt"><i class="nail s1"></i><i class="nail s2"></i><i class="nail s3"></i><i class="nail s4"></i><i class="nail s5"></i></div>
+        <h3>3D custom nail art</h3>
+        <p>Upload your own photo and we recreate it on your nails.</p>
+        <ul class="prices"><li>Per hand<b>₹299</b></li><li>Both hands<b>₹549</b></li></ul>
+        <button class="btn">Choose this</button>
+      </article>
+    </div>
+    <h3 class="sub">Your bookings</h3>
+    <div id="myBookings" class="list"></div>
+  </div>
+</section>
+
+<!-- 4. BOOKING -->
+<section id="book" class="screen">
+  <div class="wrap narrow card">
+    <button class="link" id="back">← Back</button>
+    <h2 id="bTitle"></h2>
+    <div class="step"><h4>Hands</h4>
+      <div class="opts" id="handOpts"></div></div>
+    <div class="step" id="uploadStep" hidden><h4>Upload your design photo</h4>
+      <label class="drop"><input type="file" id="photo" accept="image/*"><span id="dropTxt">Tap to choose a photo</span><img id="preview" alt="" hidden></label></div>
+    <div class="step"><h4>When do you want it?</h4>
+      <div class="opts" id="whenOpts">
+        <button class="opt" data-when="instant"><b>Instant</b><small>Next available artist</small></button>
+        <button class="opt" data-when="schedule"><b>Schedule</b><small>Pick date and time</small></button>
+      </div></div>
+    <div class="step" id="schedStep" hidden>
+      <label>Date<input type="date" id="date"></label>
+      <h4>Time</h4><div class="slots" id="slots"></div></div>
+    <div class="total"><span>Total</span><b id="total">₹0</b></div>
+    <p class="err" id="bErr"></p>
+    <button class="btn" id="confirm">Confirm booking</button>
+  </div>
+</section>
+
+<!-- 5. DONE -->
+<section id="done" class="screen">
+  <div class="center card"><div class="tick" aria-hidden="true">✓</div><h2>Booking confirmed</h2>
+    <p id="doneTxt"></p><button class="btn" id="toHome">Back to home</button></div>
+</section>
+<script src="js/app.js"></script>
+</body>
+</html>
